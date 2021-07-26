@@ -38,32 +38,32 @@ function ContactsTable({ data }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((item) => (
-              <TableRow key={item.registered.date}>
+            {data.map((contact) => (
+              <TableRow key={contact.registered.date}>
                 <TableCell component="th" scope="row">
                   <Avatar
-                    alt={`${item.name.first} ${item.name.last}`}
-                    src={item.picture.thumbnail}
+                    alt={`${contact.name.first} ${contact.name.last}`}
+                    src={contact.picture.thumbnail}
                   />
                 </TableCell>
                 <TableCell>
-                  {item.name.title}. {item.name.first} {item.name.last}
+                  {contact.name.title}. {contact.name.first} {contact.name.last}
                 </TableCell>
                 <TableCell>
-                  <Typography>{format(new Date(item.dob.date), 'yyyy-MM-dd')}</Typography>
-                  <Typography>{item.dob.age} years</Typography>
+                  <Typography>{format(new Date(contact.dob.date), 'yyyy-MM-dd')}</Typography>
+                  <Typography>{contact.dob.age} years</Typography>
                 </TableCell>
                 <TableCell>
-                  <CopytoClipboard text={item.email} />
+                  <CopytoClipboard text={contact.email} />
                 </TableCell>
                 <TableCell>
-                  <CopytoClipboard text={item.phone} />
+                  <CopytoClipboard text={contact.phone} />
                 </TableCell>
                 <TableCell>
-                  <Typography>{item.location.country}</Typography>
-                  <Typography>{item.location.city}, {item.location.street.name}{" "}{item.location.street.number}</Typography>
+                  <Typography>{contact.location.country}</Typography>
+                  <Typography>{contact.location.city}, {contact.location.street.name}{" "}{contact.location.street.number}</Typography>
                 </TableCell>
-                <TableCell>{NATIONALITIES_NUMAN_NAME[item.nat]}</TableCell>
+                <TableCell>{NATIONALITIES_NUMAN_NAME[contact.nat]}</TableCell>
               </TableRow>
             ))}
           </TableBody>

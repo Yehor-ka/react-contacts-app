@@ -10,6 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Avatar } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
+import CopytoClipboard from '../../../components/CopyToClipboard';
+import { NATIONALITIES_NUMAN_NAME } from '../../../constants/nationality';
 
 const useStyles = makeStyles({
   table: {
@@ -45,16 +47,23 @@ function ContactsTable({ data }) {
                   />
                 </TableCell>
                 <TableCell>
-                  {item.name.title}. {item.name.first} ${item.name.last}
+                  {item.name.title}. {item.name.first} {item.name.last}
                 </TableCell>
                 <TableCell>
                   <Typography>{format(new Date(item.dob.date), 'yyyy-MM-dd')}</Typography>
                   <Typography>{item.dob.age} years</Typography>
                 </TableCell>
-                <TableCell>{item.phone}</TableCell>
-                <TableCell>{item.email}</TableCell>
-                <TableCell>6</TableCell>
-                <TableCell>7</TableCell>
+                <TableCell>
+                  <CopytoClipboard text={item.email} />
+                </TableCell>
+                <TableCell>
+                  <CopytoClipboard text={item.phone} />
+                </TableCell>
+                <TableCell>
+                  <Typography>{item.location.country}</Typography>
+                  <Typography>{item.location.city}, {item.location.street.name}{" "}{item.location.street.number}</Typography>
+                </TableCell>
+                <TableCell>{NATIONALITIES_NUMAN_NAME[item.nat]}</TableCell>
               </TableRow>
             ))}
           </TableBody>

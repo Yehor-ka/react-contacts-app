@@ -29,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
 function ContactsGrid({ data }) {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} data-testid="contacts-grid-container">
       <Grid container spacing={6}>
         {data.map((contact) => {
           return (
-            <Grid item xs={6}>
+            <Grid item xs={6} key={contact.registered.date}>
               <Paper className={classes.paper}>
                 <Box display="flex" alignItems="center" marginBottom="15px">
                   <Avatar

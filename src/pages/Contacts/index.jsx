@@ -36,16 +36,16 @@ function Contacts() {
             <Typography variant="h3" component="h1">
               Contacts
             </Typography>
-            <ToggleDataViewMode dataViewMode={dataViewMode} setDataViewMode={setDataViewMode} />
+            <ToggleDataViewMode dataViewMode={dataViewMode} setDataViewMode={setDataViewMode} isLoading={contacts.isLoading} />
           </Box>
         </Grid>
         <Grid item xs={12}>
           {(() => {
             if (contacts.isLoading) {
-              return <CircularProgress />;
+              return <CircularProgress data-testid="contacts-loader" />;
             }
             if (contacts.isError) {
-              return <div>ERROR</div>;
+              return <div data-testid="contacts-error">ERROR</div>;
             }
             if (dataViewMode === DATA_VIEW_MODES.TABLE) {
               return <ContactsTable data={contacts.data} />;

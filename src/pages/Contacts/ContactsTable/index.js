@@ -8,22 +8,29 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Avatar } from '@material-ui/core';
+import { Avatar, Box } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import CopytoClipboard from '../../../components/CopyToClipboard';
-import { NATIONALITIES_NUMAN_NAME } from '../../../constants/nationality';
+import { NATIONALITIES_NUMAN_NAME, NATIONALITIES_COLOR } from '../../../constants/nationality';
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+  },
+  country: {
+    padding: '5px',
+    borderRadius: '5px',
+    fontWeight: 500,
+    color: 'white',
+    display: 'inline-block',
+    textAlign: 'center'
   },
 });
 
 function ContactsTable({ data }) {
   const classes = useStyles();
   return (
-    <div>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} data-testid="contacts-table-container">
         <Table className={classes.table} aria-label="contacts table">
           <caption>A basic table example with a caption</caption>
           <TableHead>
@@ -61,15 +68,19 @@ function ContactsTable({ data }) {
                 </TableCell>
                 <TableCell>
                   <Typography>{contact.location.country}</Typography>
-                  <Typography>{contact.location.city}, {contact.location.street.name}{" "}{contact.location.street.number}</Typography>
+                  <Typography>
+                    {contact.location.city}, {contact.location.street.name}{' '}
+                    {contact.location.street.number}
+                  </Typography>
                 </TableCell>
-                <TableCell>{NATIONALITIES_NUMAN_NAME[contact.nat]}</TableCell>
+                <TableCell >
+                  <Box className={classes.country} style={{backgroundColor: NATIONALITIES_COLOR[contact.nat]}}>{NATIONALITIES_NUMAN_NAME[contact.nat]}</Box>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
   );
 }
 

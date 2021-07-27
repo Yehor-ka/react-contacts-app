@@ -5,17 +5,24 @@ import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
 import { DATA_VIEW_MODES } from './constants';
 
-function ToggleDataViewMode({ setDataViewMode, dataViewMode }) {
+
+function ToggleDataViewMode({ setDataViewMode, dataViewMode, isLoading }) {
   const handleChangeViewMode = useCallback((_, nextView) => {
-    setDataViewMode(nextView);
+    if(nextView) {
+      setDataViewMode(nextView);
+    }
   }, [setDataViewMode])
 
   return (
     <ToggleButtonGroup value={dataViewMode} exclusive onChange={handleChangeViewMode}>
-      <ToggleButton value={DATA_VIEW_MODES.GRID} aria-label={DATA_VIEW_MODES.GRID}>
+      <ToggleButton value={DATA_VIEW_MODES.GRID} aria-label={DATA_VIEW_MODES.GRID}
+      data-testid="toggle-data-view-mode-grid"
+      disabled={isLoading}>
         <ViewModuleIcon />
       </ToggleButton>
-      <ToggleButton value={DATA_VIEW_MODES.TABLE} aria-label={DATA_VIEW_MODES.TABLE}>
+      <ToggleButton value={DATA_VIEW_MODES.TABLE} aria-label={DATA_VIEW_MODES.TABLE}
+      data-testid="toggle-data-view-mode-table"
+      disabled={isLoading}>
         <ViewListIcon />
       </ToggleButton>
     </ToggleButtonGroup>

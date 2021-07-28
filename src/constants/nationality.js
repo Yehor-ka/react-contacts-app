@@ -39,21 +39,21 @@ export const NATIONALITIES_NUMAN_NAME = {
 };
 
 export const NATIONALITIES_COLOR = {
-  [NATIONALITIES.AU]: 'gold',
-  [NATIONALITIES.BR]: 'green',
-  [NATIONALITIES.CA]: 'red',
-  [NATIONALITIES.CH]: 'red',
-  [NATIONALITIES.DE]: 'red',
-  [NATIONALITIES.DK]: 'red',
-  [NATIONALITIES.ES]: 'gold',
-  [NATIONALITIES.FI]: 'blue',
-  [NATIONALITIES.FR]: 'blue',
-  [NATIONALITIES.GB]: 'red',
-  [NATIONALITIES.IE]: 'green',
-  [NATIONALITIES.IR]: 'green',
-  [NATIONALITIES.NO]: 'red',
-  [NATIONALITIES.NL]: 'orange',
-  [NATIONALITIES.NZ]: 'darkBlue',
-  [NATIONALITIES.TR]: 'red',
-  [NATIONALITIES.US]: 'red',
+  [NATIONALITIES.AU]: [227, 227, 102],//gold
+  [NATIONALITIES.BR]: [17, 204, 3],//green
+  [NATIONALITIES.CA]: [214, 11, 11],//red
+  [NATIONALITIES.CH]: [194, 51, 51],//red
+  [NATIONALITIES.DE]: [153, 3, 3],//red
+  [NATIONALITIES.DK]: [192, 30, 30],//red
+  [NATIONALITIES.ES]: [236, 218, 38],//gold
+  [NATIONALITIES.FI]: [26, 156, 232],//blue
+  [NATIONALITIES.FR]: [26, 118, 193],//blue
+  [NATIONALITIES.GB]: [210, 45, 45],//red
+  [NATIONALITIES.IE]: [22, 171, 64],//green
+  [NATIONALITIES.IR]: [45, 180, 24],//green
+  [NATIONALITIES.NO]: [122, 30, 30],//red
+  [NATIONALITIES.NL]: [234, 186, 51],//orange
+  [NATIONALITIES.NZ]: [79, 65, 243],//blue
+  [NATIONALITIES.TR]: [202, 0, 0],//red
+  [NATIONALITIES.US]: [210, 43, 43],//red
 };

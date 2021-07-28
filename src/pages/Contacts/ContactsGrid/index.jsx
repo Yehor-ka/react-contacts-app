@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+let colorText = [242, 15, 37]
+
 function ContactsGrid({ data }) {
   const classes = useStyles();
   return (
@@ -63,7 +65,9 @@ function ContactsGrid({ data }) {
                   <Typography
                     className={classes.country}
                     style={{
-                      backgroundColor: NATIONALITIES_COLOR[contact.nat],
+                      backgroundColor: `rgba(${NATIONALITIES_COLOR[contact.nat]}, 0.3)`,
+                      color: `rgba(${NATIONALITIES_COLOR[contact.nat]}, 1)`,
+                      border: `1px solid rgba(${NATIONALITIES_COLOR[contact.nat]}, 1)`
                     }}>
                     {NATIONALITIES_NUMAN_NAME[contact.nat]}
                   </Typography>

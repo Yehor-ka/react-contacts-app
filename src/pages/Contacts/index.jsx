@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) =>
     },
     paginationContainer: {
       marginTop: theme.spacing(3),
-      marginBottom: theme.spacing(3)
-    }
+      marginBottom: theme.spacing(3),
+    },
   }),
 );
 
@@ -60,16 +60,16 @@ const getPaginationData = (currentPage, contactsPerPage, contacts) => {
   const indexOfLastContact = currentPage * contactsPerPage;
   const indexOfFirstContact = indexOfLastContact - contactsPerPage;
   const currentContacts = contacts.slice(indexOfFirstContact, indexOfLastContact);
-  let countOfPage = 0
-  if(contacts.length === 0) {
-    countOfPage = 0
+  let countOfPage = 0;
+  if (contacts.length === 0) {
+    countOfPage = 0;
   }
   countOfPage = Math.ceil(contacts.length / contactsPerPage);
   return {
     currentContacts,
-    countOfPage
-  }
-}
+    countOfPage,
+  };
+};
 
 function Contacts() {
   const styles = useStyles();
@@ -85,10 +85,12 @@ function Contacts() {
       ...prevFiilters,
       [name]: value,
     }));
+    setCurrentPage(1)
   };
 
   const clearFilters = () => {
     setFilters(FiltersDefault);
+    setCurrentPage(1)
   };
 
   const filteredContacts = contacts.data
@@ -96,9 +98,13 @@ function Contacts() {
     .filter((contact) => filterByGender(contact.gender, filters.gender))
     .filter((contact) => filterByNationality(contact.nat, filters.nationality));
 
-  const {currentContacts, countOfPage} = getPaginationData(currentPage, contactsPerPage, filteredContacts)
+  const { currentContacts, countOfPage } = getPaginationData(
+    currentPage,
+    contactsPerPage,
+    filteredContacts,
+  );
 
-  const pagination = (pageNumber) => setCurrentPage(pageNumber);
+  const pagination = (event, pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <Container className={styles.root}>
@@ -134,12 +140,15 @@ function Contacts() {
               return (
                 <>
                   <ContactsTable data={currentContacts} />
-                  <Box display='flex' justifyContent='center'className={styles.paginationContainer}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    className={styles.paginationContainer}>
                     <Pagination
                       page={currentPage}
-                      onChange={(event, currentPage) => pagination(currentPage)}
+                      onChange={pagination}
                       count={countOfPage}
-                      shape="rounded"
+                      size="large"
                     />
                   </Box>
                 </>
@@ -149,12 +158,15 @@ function Contacts() {
               return (
                 <>
                   <ContactsGrid data={currentContacts} />
-                  <Box display='flex' justifyContent='center' className={styles.paginationContainer}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    className={styles.paginationContainer}>
                     <Pagination
                       page={currentPage}
-                      onChange={(event, currentPage) => pagination(currentPage)}
+                      onChange={pagination}
                       count={countOfPage}
-                      shape="rounded"
+                      size="large"
                     />
                   </Box>
                 </>
